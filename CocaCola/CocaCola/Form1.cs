@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace CocaCola
 {
@@ -39,6 +40,8 @@ namespace CocaCola
         Image startBF = Image.FromFile("../../Images/Start/StartF.png");
         Image startBL = Image.FromFile("../../Images/Start/StartL.png");
         Image[] question_Images = new Image[10];
+        string mail = "";
+        
 
         Image Solution1 = Image.FromFile("../../Images/One.jpg");
         Image Solution2 = Image.FromFile("../../Images/Onehalf.jpg");
@@ -50,14 +53,14 @@ namespace CocaCola
         int multipack = 0;
         int two = 0;
 
+        int k = -1;
+
         int Max()
         {
             int a = Math.Max(one, onehalf);
             int b = Math.Max(multipack, two);
             return Math.Max(a, b);
         }
-
-        int k = -1;
 
         public Form1()
         {
@@ -70,10 +73,11 @@ namespace CocaCola
             choice2.Click += choice2_Click;
             choice3.Click += choice3_Click;
             choice4.Click += choice4_Click;
+            mail_TextBox.Click += mail_TextBox_Click;
             for (int i = 0; i < 10; i++)
             {
                 question_Images[i] = Image.FromFile("../../Images/Question" + (i+1).ToString() + "/Back.jpg");
-            }   
+            }
         }
 
         void NextorPreviousQuestion(bool t)
@@ -175,6 +179,13 @@ namespace CocaCola
 
         void Start()
         {
+            one = 0;
+            onehalf = 0;
+            multipack = 0;
+            two = 0;
+            mail = "";
+            k = -1;
+
             Controls.Clear();
             BackgroundImage = start_Image;
             start.Size = new Size(520, 100);
@@ -191,13 +202,13 @@ namespace CocaCola
         {
             Controls.Clear();
             mail_TextBox.Size = new Size(600, 200);
-            mail_TextBox.Location = new Point(660, 490);
-            send.Location = new Point(660, 790);
+            mail_TextBox.Location = new Point(0, 0);
+            send.Location = new Point(660, 390);
             send.Size = new Size(600, 100);
             send.BackColor = Color.Transparent;
             send.FlatStyle = FlatStyle.Popup;
             send.Text = "NA POCETAK";
-            //Controls.Add(mail_TextBox);
+            Controls.Add(mail_TextBox);
             Controls.Add(send);
             int max = Max();
             if(max == one)
@@ -216,7 +227,7 @@ namespace CocaCola
             {
                 BackgroundImage = Solution4;
             }
-            string mail = mail_TextBox.Text;
+            mail = mail_TextBox.Text;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -235,32 +246,37 @@ namespace CocaCola
 
         private void next_Click(object sender, EventArgs e)
         {
-            if(choice1.Checked)
+            if (!choice1.Checked && !choice2.Checked && !choice3.Checked && !choice4.Checked)
             {
-                myanswers[k] = 1;
-            }
-            if (choice2.Checked)
-            {
-                myanswers[k] = 2;
-            }
-            if (choice3.Checked)
-            {
-                myanswers[k] = 3;
-            }
-            if (choice4.Checked)
-            {
-                myanswers[k] = 4;
-            }
-            if (k >= 9)
-            {
-                k = -1;
-                string answers = "";
-                Update1(); Update2(); Update3(); Update4(); Update5(); Update6(); Update7(); Update8(); Update9(); Update10();
-                Mail();
+                
             }
             else
             {
-                NextorPreviousQuestion(true);
+                if (choice1.Checked)
+                {
+                    myanswers[k] = 1;
+                }
+                if (choice2.Checked)
+                {
+                    myanswers[k] = 2;
+                }
+                if (choice3.Checked)
+                {
+                    myanswers[k] = 3;
+                }
+                if (choice4.Checked)
+                {
+                    myanswers[k] = 4;
+                }
+                if (k >= 9)
+                {
+                    Update1(); Update2(); Update3(); Update4(); Update5(); Update6(); Update7(); Update8(); Update9(); Update10();
+                    Mail();
+                }
+                else
+                {
+                    NextorPreviousQuestion(true);
+                }
             }
         }
 
@@ -271,7 +287,19 @@ namespace CocaCola
 
         private void send_Click(object sender, EventArgs e)
         {
+            Process[] oskProcessArray = Process.GetProcessesByName("TabTip");
+            foreach (Process onscreenProcess in oskProcessArray)
+            {
+                onscreenProcess.Kill();
+            }
             Start();
+        }
+
+        private void mail_TextBox_Click(object sender, EventArgs e)
+        {
+            string progFiles = @"C:\Program Files\Common Files\Microsoft Shared\ink";
+            string onScreenKeyboardPath = System.IO.Path.Combine(progFiles, "TabTip.exe");
+            Process onScreenKeyboardProc = System.Diagnostics.Process.Start(onScreenKeyboardPath);
         }
 
         private void choice1_Click(object sender, EventArgs e)
