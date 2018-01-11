@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace CocaCola
 {
@@ -74,10 +75,73 @@ namespace CocaCola
             choice3.Click += choice3_Click;
             choice4.Click += choice4_Click;
             mail_TextBox.Click += mail_TextBox_Click;
-            for (int i = 0; i < 10; i++)
+            for(int i = 0; i < 10; i++)
             {
-                question_Images[i] = Image.FromFile("../../Images/Question" + (i+1).ToString() + "/Back.jpg");
+                question_Images[i] = Image.FromFile("../../Images/" + (i + 1).ToString() + ".jpg");
             }
+
+            panel.Location = new Point(1100, 400);
+            panel.Size = new Size(510, 500);
+            panel.BackColor = Color.White;
+
+            choice1.Location = new Point(5, 10);
+            choice1.Size = new Size(500, 100);
+            choice1.Appearance = Appearance.Button;
+            choice1.BackColor = Color.Transparent;
+            choice1.Checked = false;
+            choice1.BackColor = Color.Transparent;
+            choice1.FlatStyle = FlatStyle.Flat;
+            choice1.FlatAppearance.BorderSize = 0;
+            choice1.ForeColor = Color.Red;
+            choice1.Font = new Font(choice1.Font.FontFamily, 18);
+
+            choice2.Location = new Point(5, 120);
+            choice2.Size = new Size(500, 100);
+            choice2.Appearance = Appearance.Button;
+            choice2.BackColor = Color.Transparent;
+            choice2.Checked = false;
+            choice2.BackColor = Color.Transparent;
+            choice2.FlatStyle = FlatStyle.Flat;
+            choice2.FlatAppearance.BorderSize = 0;
+            choice2.ForeColor = Color.Red;
+            choice2.Font = new Font(choice2.Font.FontFamily, 18);
+
+            choice3.Location = new Point(5, 230);
+            choice3.Size = new Size(500, 100);
+            choice3.Appearance = Appearance.Button;
+            choice3.BackColor = Color.Transparent;
+            choice3.Checked = false;
+            choice3.BackColor = Color.Transparent;
+            choice3.FlatStyle = FlatStyle.Flat;
+            choice3.FlatAppearance.BorderSize = 0;
+            choice3.ForeColor = Color.Red;
+            choice3.Font = new Font(choice3.Font.FontFamily, 18);
+
+            choice4.Location = new Point(5, 340);
+            choice4.Size = new Size(500, 100);
+            choice4.Appearance = Appearance.Button;
+            choice4.BackColor = Color.Transparent;
+            choice4.Checked = false;
+            choice4.BackColor = Color.Transparent;
+            choice4.FlatStyle = FlatStyle.Flat;
+            choice4.FlatAppearance.BorderSize = 0;
+            choice4.ForeColor = Color.Red;
+            choice4.Font = new Font(choice4.Font.FontFamily, 18);
+
+            back.Location = new Point(1920 - 950, 1080 - 150);
+            back.Size = new Size(100, 100);
+            back.BackColor = Color.White;
+            back.BackgroundImage = Image.FromFile("../../Images//Back.png");
+            back.FlatStyle = FlatStyle.Flat;
+            back.FlatAppearance.BorderSize = 0;
+
+            next.Location = new Point(1920 - 150, 1080 - 150);
+            next.Size = new Size(100, 100);
+            next.BackColor = Color.White;
+            next.FlatStyle = FlatStyle.Flat;
+            next.FlatAppearance.BorderSize = 0;
+            next.BackgroundImage = Image.FromFile("../../Images/Next.png");
+
         }
 
         void NextorPreviousQuestion(bool t)
@@ -90,91 +154,42 @@ namespace CocaCola
             {
                 k--;
             }
-
-            Controls.Clear();
-
-            next.Location = new Point(1920 - 150, 1080 - 150);
-            next.Size = new Size(100, 100);
-            next.BackColor = Color.Transparent;
-            next.FlatStyle = FlatStyle.Flat;
-            next.FlatAppearance.BorderSize = 0;
-            next.BackgroundImage = Image.FromFile("../../Images/Next.png");
-            if (k != 0)
+            if (k == 0)
             {
-                back.Location = new Point(1920 - 950, 1080 - 150);
-                back.Size = new Size(100, 100);
-                back.BackColor = Color.Transparent;
-                back.BackgroundImage = Image.FromFile("../../Images//Back.png");
-                back.FlatStyle = FlatStyle.Flat;
-                back.FlatAppearance.BorderSize = 0;
+                Controls.Clear();
+
+                panel.Controls.Add(choice1);
+                panel.Controls.Add(choice2);
+                panel.Controls.Add(choice3);
+                panel.Controls.Add(choice4);
+
+                Controls.Add(next);
+                Controls.Add(panel);
+            }
+            if(k == 1)
+            {
                 Controls.Add(back);
             }
 
 
-            panel.Location = new Point(1100, 400);
-            panel.Size = new Size(510, 500);
-            panel.BackColor = Color.Transparent;
-
             //Choice1
-            choice1.Location = new Point(5, 10);
-            choice1.Size = new Size(500, 100);
-            choice1.Appearance = Appearance.Button;
-            choice1.BackColor = Color.Transparent;
-            choice1.Checked = false;
-            choice1.BackColor = Color.Transparent;
-            choice1.FlatStyle = FlatStyle.Flat;
-            choice1.FlatAppearance.BorderSize = 0;
+            choice1.BackColor = Color.White;
             choice1.ForeColor = Color.Red;
-            choice1.Font = new Font(choice1.Font.FontFamily, 18);
             choice1.Text = "1) " + choices[k, 0];
             //Choice2
-            choice2.Location = new Point(5, 120);
-            choice2.Size = new Size(500, 100);
-            choice2.Appearance = Appearance.Button;
-            choice2.BackColor = Color.Transparent;
-            choice2.Checked = false;
-            choice2.BackColor = Color.Transparent;
-            choice2.FlatStyle = FlatStyle.Flat;
-            choice2.FlatAppearance.BorderSize = 0;
+            choice2.BackColor = Color.White;
             choice2.ForeColor = Color.Red;
-            choice2.Font = new Font(choice2.Font.FontFamily, 18);
             choice2.Text = "2) " + choices[k, 1];
             //Choice3
-            choice3.Location = new Point(5, 230);
-            choice3.Size = new Size(500, 100);
-            choice3.Appearance = Appearance.Button;
-            choice3.BackColor = Color.Transparent;
-            choice3.Checked = false;
-            choice3.BackColor = Color.Transparent;
-            choice3.FlatStyle = FlatStyle.Flat;
-            choice3.FlatAppearance.BorderSize = 0;
+            choice3.BackColor = Color.White;
             choice3.ForeColor = Color.Red;
-            choice3.Font = new Font(choice3.Font.FontFamily, 18);
             choice3.Text = "3) " + choices[k, 2];
             //Choice4
-            choice4.Location = new Point(5, 340);
-            choice4.Size = new Size(500, 100);
-            choice4.Appearance = Appearance.Button;
-            choice4.BackColor = Color.Transparent;
-            choice4.Checked = false;
-            choice4.BackColor = Color.Transparent;
-            choice4.FlatStyle = FlatStyle.Flat;
-            choice4.FlatAppearance.BorderSize = 0;
+            choice4.BackColor = Color.White;
             choice4.ForeColor = Color.Red;
-            choice4.Font = new Font(choice4.Font.FontFamily, 18);
             choice4.Text = "4) " + choices[k, 3];
 
-            panel.Controls.Add(choice1);
-            panel.Controls.Add(choice2);
-            panel.Controls.Add(choice3);
-            panel.Controls.Add(choice4);
-
-            Controls.Add(next);
-            Controls.Add(panel);
-
-                       
             BackgroundImage = question_Images[k];
-
         }
 
         void Start()
@@ -310,11 +325,11 @@ namespace CocaCola
             choice4.Checked = false;
             choice1.BackColor = Color.Red;
             choice1.ForeColor = Color.White;
-            choice2.BackColor = Color.Transparent;
+            choice2.BackColor = Color.White;
             choice2.ForeColor = Color.Red;
-            choice3.BackColor = Color.Transparent;
+            choice3.BackColor = Color.White;
             choice3.ForeColor = Color.Red;
-            choice4.BackColor = Color.Transparent;
+            choice4.BackColor = Color.White;
             choice4.ForeColor = Color.Red;
         }
         private void choice2_Click(object sender, EventArgs e)
@@ -323,13 +338,13 @@ namespace CocaCola
             choice2.Checked = true;
             choice3.Checked = false;
             choice4.Checked = false;
-            choice1.BackColor = Color.Transparent;
+            choice1.BackColor = Color.White;
             choice1.ForeColor = Color.Red;
             choice2.BackColor = Color.Red;
             choice2.ForeColor = Color.White;
-            choice3.BackColor = Color.Transparent;
+            choice3.BackColor = Color.White;
             choice3.ForeColor = Color.Red;
-            choice4.BackColor = Color.Transparent;
+            choice4.BackColor = Color.White;
             choice4.ForeColor = Color.Red;
         }
         private void choice3_Click(object sender, EventArgs e)
@@ -338,13 +353,13 @@ namespace CocaCola
             choice2.Checked = false;
             choice3.Checked = true;
             choice4.Checked = false;
-            choice1.BackColor = Color.Transparent;
+            choice1.BackColor = Color.White;
             choice1.ForeColor = Color.Red;
-            choice2.BackColor = Color.Transparent;
+            choice2.BackColor = Color.White;
             choice2.ForeColor = Color.Red;
             choice3.BackColor = Color.Red;
             choice3.ForeColor = Color.White;
-            choice4.BackColor = Color.Transparent;
+            choice4.BackColor = Color.White;
             choice4.ForeColor = Color.Red;
         }
         private void choice4_Click(object sender, EventArgs e)
@@ -353,11 +368,11 @@ namespace CocaCola
             choice2.Checked = false;
             choice3.Checked = false;
             choice4.Checked = true;
-            choice1.BackColor = Color.Transparent;
+            choice1.BackColor = Color.White;
             choice1.ForeColor = Color.Red;
-            choice2.BackColor = Color.Transparent;
+            choice2.BackColor = Color.White;
             choice2.ForeColor = Color.Red;
-            choice3.BackColor = Color.Transparent;
+            choice3.BackColor = Color.White;
             choice3.ForeColor = Color.Red;
             choice4.BackColor = Color.Red;
             choice4.ForeColor = Color.White;

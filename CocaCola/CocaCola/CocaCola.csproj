@@ -58,17 +58,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -77,6 +78,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question1\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question2\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question3\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question4\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question5\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question6\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question7\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question8\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question9\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Question10\Back.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
