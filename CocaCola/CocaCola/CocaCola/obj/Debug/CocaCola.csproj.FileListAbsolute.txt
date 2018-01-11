@@ -1,0 +1,9 @@
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\bin\Debug\CocaCola.exe.config
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\bin\Debug\CocaCola.exe
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\bin\Debug\CocaCola.pdb
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.Form1.resources
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.Properties.Resources.resources
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.csproj.GenerateResource.Cache
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.exe
+C:\Users\Stefan\Documents\Visual Studio 2017\Projects\CocaCola\CocaCola\obj\Debug\CocaCola.pdb
